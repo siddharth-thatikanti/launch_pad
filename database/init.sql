@@ -1,0 +1,10 @@
+CREATE TABLE IF NOT EXISTS leads (
+  id BIGSERIAL PRIMARY KEY,
+  name VARCHAR(100) NOT NULL,
+  email VARCHAR(254) NOT NULL,
+  message VARCHAR(2000) NOT NULL,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+CREATE INDEX IF NOT EXISTS idx_leads_created_at
+  ON leads (created_at DESC);

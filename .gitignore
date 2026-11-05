@@ -1,0 +1,21 @@
+# Environment secrets
+.env
+.env.*
+!.env.example
+
+# Dependencies
+node_modules/
+
+# Build files
+.next/
+dist/
+coverage/
+
+# Logs
+*.log
+
+# Database data
+postgres_data/
+
+# OS files
+.DS_Store
