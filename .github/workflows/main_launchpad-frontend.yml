@@ -42,14 +42,21 @@ jobs:
           fi
           npm run build
 
-      - name: Prepare standalone package
+      - name: Prepare standalone deployment
         working-directory: frontend
         run: |
-          mkdir -p .next/standalone/.next
-          cp -r .next/static .next/standalone/.next/static
+          test -f .next/standalone/server.js
+          mkdir -p .next/standalone/.next/static
+          cp -r .next/static/. .next/standalone/.next/static/
+
           if [ -d public ]; then
-            cp -r public .next/standalone/public
+            mkdir -p .next/standalone/public
+            cp -r public/. .next/standalone/public/
           fi
+
+          echo "Standalone deployment contents:"
+          ls -la .next/standalone/
+          test -f .next/standalone/server.js
 
       - name: Upload frontend artifact
         uses: actions/upload-artifact@v4
