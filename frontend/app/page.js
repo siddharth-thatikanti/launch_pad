@@ -90,7 +90,7 @@ export default function Home() {
     <main>
       <nav className="nav shell">
         <a className="brand" href="#">
-          <b>L</b> LaunchPad
+          <b>WS</b> White stone properties
         </a>
 
         <div>
