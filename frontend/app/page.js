@@ -3,7 +3,7 @@
 
 import { useState } from "react";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL;
+const API_URL = "/api";
 
 export default function Home() {
   const [form, setForm] = useState({
@@ -29,12 +29,6 @@ export default function Home() {
     setStatus(null);
 
     try {
-      if (!API_URL) {
-        throw new Error(
-          "API URL is missing. Rebuild frontend with NEXT_PUBLIC_API_URL."
-        );
-      }
-
       const response = await fetch(`${API_URL}/leads`, {
         method: "POST",
         headers: {
@@ -51,7 +45,7 @@ export default function Home() {
         data = JSON.parse(responseText);
       } catch {
         throw new Error(
-          `API returned invalid JSON or HTML. HTTP ${response.status}. Check API URL and endpoint.`
+          `API returned invalid JSON. HTTP ${response.status}. Check API proxy configuration.`
         );
       }
 
@@ -60,9 +54,7 @@ export default function Home() {
           ? data.message.join(", ")
           : data.message;
 
-        throw new Error(
-          message || "Unable to send your message."
-        );
+        throw new Error(message || "Unable to send your message.");
       }
 
       setStatus({
