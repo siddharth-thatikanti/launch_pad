@@ -264,11 +264,11 @@ export default function Home() {
 
       <footer className="shell footer">
         <a className="brand" href="#">
-          <b>L</b> LaunchPad
+          <b>WS</b> whitestoneproperties
         </a>
 
         <span>
-          © {new Date().getFullYear()} LaunchPad. All rights reserved.
+          © {new Date().getFullYear()} Whitestoneproperties. All rights reserved.
         </span>
 
         <a href="#">Back to top ↑</a>
